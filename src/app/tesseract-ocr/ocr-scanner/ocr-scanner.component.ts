@@ -25,8 +25,8 @@ export class OcrScannerComponent implements OnInit, OnDestroy {
   async ocr() {
     this.tesseract.imageToText(this.image, this.lang).subscribe((res: any) => {
       this.text = res;
+      this.tesseract.terminateWorker();
     });
-    this.tesseract.terminateWorker();
   }
 
 }

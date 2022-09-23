@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { TesseractOcrModule } from './tesseract-ocr/tesseract-ocr.module';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -8,7 +10,8 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    TesseractOcrModule
   ],
   providers: [],
   bootstrap: [AppComponent]
