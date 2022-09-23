@@ -10,6 +10,8 @@ export class OcrScannerComponent implements OnInit, OnDestroy {
   @Input() image: string = '';
   @Input() lang: string = 'eng';  // eng for English, spa for Spanish
 
+  @Output() ocrText = new EventEmitter<any>();
+
   text = '';
   tesseract: any;
 
@@ -20,11 +22,14 @@ export class OcrScannerComponent implements OnInit, OnDestroy {
     this.ocr();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.tesseract.terminateWorker()
+  }
 
   async ocr() {
     this.tesseract.imageToText(this.image, this.lang).subscribe((res: any) => {
       this.text = res;
+      this.ocrText.emit(res);
       this.tesseract.terminateWorker();
     });
   }

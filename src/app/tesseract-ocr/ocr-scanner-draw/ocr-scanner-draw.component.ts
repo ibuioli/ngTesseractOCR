@@ -12,6 +12,8 @@ export class OcrScannerDrawComponent implements OnInit, AfterViewInit {
   @Input() width: number = 300;
   @Input() height: number = 300;
 
+  @Output() ocrText = new EventEmitter<any>();
+
   @ViewChild('ocr')
   private ocrCanvas: ElementRef = {} as ElementRef;
 
@@ -55,11 +57,6 @@ export class OcrScannerDrawComponent implements OnInit, AfterViewInit {
     this.tesseract.terminateWorker();
   }
 
-  async ocr() {
-    this.tesseract.imageToText(this.image, this.lang).subscribe((res: any) => {
-    });
-  }
-
   mouseDown(e: any): void {
     this.rect.startX = e.pageX - this.canvas.offsetLeft;
     this.rect.startY = e.pageY - this.canvas.offsetTop;
@@ -88,7 +85,7 @@ export class OcrScannerDrawComponent implements OnInit, AfterViewInit {
     console.log(this.ocrRect);
 
     this.tesseract.imageRectToText(this.image, this.lang, this.ocrRect).subscribe((res: any) => {
-      console.log(res);
+      this.ocrText.emit(res);
     });
 
     this.ctx.clearRect(0, 0, 500, 500);
