@@ -8,7 +8,24 @@
   </ocr-scanner>
 </div>
 
-<h3 style="text-align:center;">OCR with Rect (draw a rect over the image, check console.log)</h3>
+<h3 style="text-align:center;">OCR with Rects (check console.log)</h3>
+
+<div style="margin:20px auto; width:800px; text-align: center;">
+  <ocr-scanner-rects
+    image="https://tesseract.projectnaptha.com/img/eng_bw.png"
+    lang="eng"
+    [width]="370"
+    [height]="166"
+    [rects]="[
+    { left: 2, top: 2, width: 32, height: 14 },
+    { left: 15, top: 38, width: 40, height: 12 },
+    ]"
+    
+    (ocrText)="getOcrText($event)">
+  </ocr-scanner-rects>
+</div>
+
+<h3 style="text-align:center;">OCR with Rect Draw (draw a rect over the image, check console.log)</h3>
 
 <div style="margin:20px auto; width:800px; text-align: center;">
   <ocr-scanner-draw

@@ -6,7 +6,7 @@ import { TesseractService } from '../services/ng-tesseract/ng-tesseract.service'
   templateUrl: './ocr-scanner-draw.component.html',
   styleUrls: ['./ocr-scanner-draw.component.scss']
 })
-export class OcrScannerDrawComponent implements OnInit, AfterViewInit {
+export class OcrScannerDrawComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() image: string = '';
   @Input() lang: string = 'eng';  // eng for English, spa for Spanish
   @Input() width: number = 300;
