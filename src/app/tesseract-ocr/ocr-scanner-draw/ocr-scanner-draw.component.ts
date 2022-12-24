@@ -66,10 +66,10 @@ export class OcrScannerDrawComponent implements OnInit, AfterViewInit, OnDestroy
   mouseUp(e: any): void {
     this.drag = false
 
-    let tx = Math.round((this.imageObj.width * this.rect.startX) / this.canvas.width);
-    let ty = Math.round((this.imageObj.height * this.rect.startY) / this.canvas.height);
-    let tw = Math.round((this.imageObj.width * this.rect.w) / this.canvas.width);
-    let th = Math.round((this.imageObj.height * this.rect.h) / this.canvas.height);
+    let tx = ~~((this.imageObj.width * this.rect.startX) / this.canvas.width);
+    let ty = ~~((this.imageObj.height * this.rect.startY) / this.canvas.height);
+    let tw = ~~((this.imageObj.width * this.rect.w) / this.canvas.width);
+    let th = ~~((this.imageObj.height * this.rect.h) / this.canvas.height);
 
     if (tw < 0) {
       tx = tx + tw;
